@@ -5,8 +5,8 @@ import socketserver
 
 PORT = 8014
 
-def ten_drugs():#Vamos a crear una lista para obtener los datos de los medicamentos
-
+#Vamos a crear una lista para obtener los datos de los medicamentos
+def ten_drugs():
     list_drugs = [] #Inicializamos una lista vacia.
     headers = {'User-Agent': 'http-client'}
 
@@ -16,11 +16,13 @@ def ten_drugs():#Vamos a crear una lista para obtener los datos de los medicamen
     drug_utf = resp.read().decode("utf-8")
     con.close()
     drugs = json.loads(drug_utf)
-
-    for drug in range(len(drugs['results'])):#Utilizamos un bucle 'for' que itere sobre cada uno de los campos que nos interesa:'results'
+    
+     #Utilizamos un bucle 'for' que itere sobre cada uno de los campos que nos interesa:'results'
+    for drug in range(len(drugs['results'])):
         medicamento = drugs['results'][drug]
-
-        if (medicamento['openfda']):#Si existe el campo openfda se imprime el nombre del producto y añadimos este a la lista
+        
+        #Si existe el campo openfda se imprime el nombre del producto y añadimos este a la lista
+        if (medicamento['openfda']):
             print('Nombre:', medicamento['openfda']['substance_name'][0])
             list_drugs.append(medicamento['openfda']['substance_name'][0])
         else:
