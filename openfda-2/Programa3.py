@@ -4,7 +4,8 @@ import json
 headers = {'User-Agent':'http-client'}
 
 con = http.client.HTTPSConnection('api.fda.gov')
-con.request("GET","/drug/label.json?limit=100&search=active_ingredient:acetylsalicylic",None,headers)#Buscamos manualmente los medicamentos comprobando el pricipio activo
+#Buscamos manualmente los medicamentos comprobando el pricipio activo
+con.request("GET","/drug/label.json?limit=100&search=active_ingredient:acetylsalicylic",None,headers)
 resp = con.getresponse()
 drug_utf = resp.read().decode("utf-8")
 con.close()
