@@ -27,6 +27,7 @@ def ten_drugs():
             list_drugs.append(medicamento['openfda']['substance_name'][0])
         else:
             list_drugs.append("No se especifica el nombre del medicamento")
+            print("No se especifica el nombre del medicamento")
     return list_drugs
 
 class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
@@ -38,18 +39,16 @@ class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/html')
         self.end_headers()
 
-        contenido = """<html>
-        <head><title>Lista con los 10 medicamentos </title></head>
-        <body style="background-color: pink">
+        content = """<html><head><title>Lista con los 10 medicamentos </title></head><body style="background-color: pink">
         <h1> Nombres de los 10 medicamentos: </h2>"""
 
         lista = ten_drugs()
         for drug in lista:
-            contenido += "<ul><li>" + drug + "</li></ul>" + "<br>"
+            content += "<ul><li>" + drug + "</li></ul>" + "<br>"
 
-        contenido += "</body></html>"
+        content += "</body></html>"
 
-        self.wfile.write(bytes(contenido, "utf8"))
+        self.wfile.write(bytes(content, "utf8"))
         print("File served!")
         return
 
