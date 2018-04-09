@@ -24,4 +24,4 @@ purpose = drug_info["purpose"][0]
 print("Proposito del producto: ", purpose)
 #Dentro del campo openfda recpgemos el campo del fabricante
 manu = drug_info["openfda"]["manufacturer_name"]
-print("Fabricante del producto: ", manu)
+print("Fabricante del medicamento: ", manu)
