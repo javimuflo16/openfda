@@ -11,7 +11,7 @@ def ten_drugs():
     headers = {'User-Agent': 'http-client'}
 
     con = http.client.HTTPSConnection('api.fda.gov')
-    con.request("GET", "/drug/label.json?limit=10", None,headers)
+    con.request("GET", "/drug/label.json?limit=100", None,headers)
     resp = con.getresponse()
     drug_utf = resp.read().decode("utf-8")
     con.close()
